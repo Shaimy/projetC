@@ -5,7 +5,7 @@
 ** Login   <azis_w@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  6 09:14:44 2017 AZIS Widad
-** Last update Mon Nov  6 19:13:47 2017 AZIS Widad
+** Last update Tue Nov  7 15:41:27 2017 AZIS Widad
 */
 #ifndef _FTL_H_
 # define _FTL_H_
@@ -64,5 +64,6 @@ int						add_navigation_tools_to_ship(t_ship *ship);
 int						add_container_to_ship(t_ship *ship);
 t_freight				*create_freight();
 void					add_freight_to_container(t_ship *ship, t_freight *freight);
-
+void					del_freight_from_container(t_ship *ship, t_freight *freight);
+void					get_bonus(t_ship *ship);
 #endif /* !_FTL_H_ */

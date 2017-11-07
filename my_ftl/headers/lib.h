@@ -5,7 +5,7 @@
 ** Login   <azis_w@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  6 11:19:59 2017 AZIS Widad
-** Last update Mon Nov  6 12:09:59 2017 AZIS Widad
+** Last update Tue Nov  7 15:27:28 2017 AZIS Widad
 */
 #ifndef _LIB_H_
 # define _LIB_H_
@@ -15,5 +15,6 @@ void			my_putstr(char *str);
 void			my_put_nbr(int n);
 int				my_strlen(const char *str);
 char			*my_strdup(const char *str);
+int				my_strcmp(const char *s1, const char *s2);
 
 #endif /* !_LIB_H_ */
