@@ -5,7 +5,7 @@
 ** Login   <azis_w@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  6 14:34:50 2017 AZIS Widad
-** Last update Tue Nov  7 15:54:44 2017 AZIS Widad
+** Last update Thu Nov  9 16:35:24 2017 AZIS Widad
 */
 #include "../headers/ftl.h"
 
@@ -24,6 +24,7 @@ int				add_container_to_ship(t_ship *ship)
   container->nb_elem = 0;
   ship->container = container;
   my_putstr("\033[32mle container a ete ajoute avec succes!\033[0m\n");
+  free(container);
   return (1);
 }
 
@@ -56,7 +57,7 @@ void			del_freight_from_container(t_ship *ship, t_freight *freight)
 		  if (freight->next != NULL)
 			freight->next->prev = freight->prev;
 		  else
-			ship->container->last = freight->next;
+			ship->container->last = freight->prev;
 		  ship->container->nb_elem--;
 		  free(freight);
 		  return;
@@ -72,13 +73,23 @@ void			get_bonus(t_ship *ship)
   it = ship->container->first;
   while (it != NULL)
 	{
-	  if (my_strcmp(it->item,"attackbonus"))
-		ship->weapon->damage += 5;
-	  if (my_strcmp(it->item,"evadebonus"))
-		ship->navigation_tools->evade += 3;
-	  if (my_strcmp(it->item,"energy"))
-		ship->ftl_drive->energy++;
-	  del_freight_from_container(ship, it);
+	  if (my_strcmp(it->item, "attackbonus") == 0)
+		{
+		  ship->weapon->damage += 5;
+		  del_freight_from_container(ship, it);
+		}
+	  if (my_strcmp(it->item, "evadebonus") == 0)
+		{
+		  ship->navigation_tools->evade += 3;
+		  del_freight_from_container(ship, it);
+		}
+	  if (my_strcmp(it->item, "energy") == 0)
+		{
+		  ship->ftl_drive->energy++;
+		  del_freight_from_container(ship, it);
+		}
+	  if (my_strcmp(it->item, "scrap") == 0)
+		del_freight_from_container(ship, it);
 	  it = it->next;
 	}
 }

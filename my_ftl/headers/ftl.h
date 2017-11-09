@@ -5,7 +5,7 @@
 ** Login   <azis_w@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  6 09:14:44 2017 AZIS Widad
-** Last update Tue Nov  7 15:41:27 2017 AZIS Widad
+** Last update Thu Nov  9 16:47:11 2017 AZIS Widad
 */
 #ifndef _FTL_H_
 # define _FTL_H_
@@ -57,13 +57,42 @@ typedef struct			s_ship
   t_container			*container;
 }						t_ship;
 
+typedef struct			s_repair_command
+{
+  char					*name_fct;
+  void					(*ptrFct)(t_ship *ship);
+}						t_repair_command;
+
+typedef struct			s_ennemy
+{
+  int					pt_damage;
+  int					hp;
+}						t_ennemy;
+
+typedef struct			s_action_game
+{
+  char					*name_action;
+  void					(*ptrGame)(t_ship *ship);
+}						t_action_game;
+
 t_ship					*create_ship();
 int						add_weapon_to_ship(t_ship *ship);
 int						add_ftl_drive_to_ship(t_ship *ship);
 int						add_navigation_tools_to_ship(t_ship *ship);
 int						add_container_to_ship(t_ship *ship);
+
 t_freight				*create_freight();
 void					add_freight_to_container(t_ship *ship, t_freight *freight);
 void					del_freight_from_container(t_ship *ship, t_freight *freight);
 void					get_bonus(t_ship *ship);
+
+void					ftl_drive_system_check(t_ship *ship);
+void					navigation_tools_system_check(t_ship *ship);
+void					weapon_system_check(t_ship *ship);
+void					system_control(t_ship *ship);
+
+void					ftl_drive_system_repair(t_ship *ship);
+void					navigation_tools_system_repair(t_ship *ship);
+void					weapon_system_repair(t_ship *ship);
+void					system_repair(t_ship *ship);
 #endif /* !_FTL_H_ */

@@ -5,8 +5,9 @@
 ** Login   <azis_w@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  6 10:07:35 2017 AZIS Widad
-** Last update Tue Nov  7 10:16:46 2017 AZIS Widad
+** Last update Thu Nov  9 17:03:32 2017 AZIS Widad
 */
+
 #include "../headers/ftl.h"
 
 t_ship					*create_ship()
@@ -42,6 +43,8 @@ int						add_weapon_to_ship(t_ship *ship)
   weapon->system_state = my_strdup("online");
   ship->weapon = weapon;
   my_putstr("\033[32mles armes on ete ajoutes avec succes!\033[0m\n");
+  free(weapon->system_state);
+  free(weapon);
   return (1);
 }
 
@@ -59,6 +62,8 @@ int						add_ftl_drive_to_ship(t_ship *ship)
   ftl_drive->system_state = my_strdup("online");
   ship->ftl_drive = ftl_drive;
   my_putstr("\033[32mle reacteur a ete ajoute avec succes!\033[0m\n");
+  free(ftl_drive->system_state);
+  free(ftl_drive);
   return (1);
 }
 
@@ -77,5 +82,7 @@ int						add_navigation_tools_to_ship(t_ship *ship)
   navigation_tools->system_state = my_strdup("online");
   ship->navigation_tools = navigation_tools;
   my_putstr("\033[32mles outils de navigations ont ete ajoutes avec succes!\033[0m\n");
+  free(navigation_tools->system_state);
+  free(navigation_tools);
   return (1);
 }

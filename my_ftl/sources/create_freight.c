@@ -5,13 +5,14 @@
 ** Login   <azis_w@etna-alternance.net>
 ** 
 ** Started on  Tue Nov  7 12:19:48 2017 AZIS Widad
-** Last update Tue Nov  7 12:23:50 2017 AZIS Widad
+** Last update Thu Nov  9 15:06:38 2017 AZIS Widad
 */
 #include "../headers/ftl.h"
 
 t_freight		*create_freight()
 {
   t_freight		*freight;
+
   if ((freight = malloc(sizeof(t_freight))) == NULL)
 	{
 	  my_putstr
